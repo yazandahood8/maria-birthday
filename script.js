@@ -11,6 +11,9 @@ function onPuzzleComplete() {
   initConfetti();
   initMusicPlayer();
   initGallery();
+  initTapHearts();
+  initHiddenLoveNote();
+  initStoryAnimations();
 }
 
 /* ============================================
@@ -233,4 +236,77 @@ function initGallery() {
       closeLightbox();
     }
   });
+}
+
+/* ============================================
+   Tap to Add Hearts
+   ============================================ */
+
+function initTapHearts() {
+  const mainContent = document.getElementById('main-content');
+  if (!mainContent) return;
+
+  mainContent.addEventListener('click', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    const heart = document.createElement('span');
+    heart.className = 'tap-heart';
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1500);
+  });
+}
+
+/* ============================================
+   Hidden Love Note (click Maria's name)
+   ============================================ */
+
+function initHiddenLoveNote() {
+  const nameEl = document.querySelector('.hero-title .name');
+  const modal = document.getElementById('love-note-modal');
+  const modalClose = document.querySelector('.love-note-close');
+
+  if (!nameEl || !modal) return;
+
+  nameEl.style.cursor = 'pointer';
+  nameEl.addEventListener('click', () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+}
+
+/* ============================================
+   Story Scroll Animations
+   ============================================ */
+
+function initStoryAnimations() {
+  const steps = document.querySelectorAll('.story-step');
+  if (!steps.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  steps.forEach((step) => observer.observe(step));
 }
