@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Maria!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Puzzle intro overlay - assembles then reveals full page -->
+  <div id="puzzle-overlay" class="puzzle-overlay">
+    <div class="puzzle-container">
+      <div class="puzzle-piece" data-col="0" data-row="0"></div>
+      <div class="puzzle-piece" data-col="1" data-row="0"></div>
+      <div class="puzzle-piece" data-col="0" data-row="1"></div>
+      <div class="puzzle-piece" data-col="1" data-row="1"></div>
+    </div>
+    <p class="puzzle-hint">Putting the pieces together...</p>
+  </div>
+
+  <div id="main-content" class="main-content hidden">
+  <div class="floating-hearts" aria-hidden="true">
+    <span class="heart heart-1"></span>
+    <span class="heart heart-2"></span>
+    <span class="heart heart-3"></span>
+    <span class="heart heart-4"></span>
+    <span class="heart heart-5"></span>
+    <span class="heart heart-6"></span>
+  </div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-flourish">&#10084;</span>
+      <h1 class="hero-title">Happy Birthday <span class="name">Maria</span>!</h1>
+      <p class="hero-subtitle">A little surprise made with love</p>
+      <span class="hero-forever">forever & always</span>
+      <button id="music-toggle" class="music-btn" aria-label="Play music">
+        <span class="music-icon">♪</span>
+        <span class="music-label">Play our song</span>
+      </button>
+    </div>
+    <audio id="birthday-music" loop>
+      <!-- CUSTOMIZE: Replace "birthday-song.mp3" with your music file in assets/music/ -->
+      <source src="assets/music/birthday-song.mpeg" type="audio/mpeg">
+      <source src="assets/music/birthday-song.ogg" type="audio/ogg">
+    </audio>
+  </section>
+
+  <!-- Heartfelt Letter Section -->
+  <section class="letter-section">
+    <div class="letter-container">
+      <h2 class="letter-title">A Letter for You</h2>
+      <div class="letter-paper">
+        <span class="letter-ribbon"></span>
+        <span class="letter-seal"></span>
+        <!-- CUSTOMIZE: Edit the message below with your own words -->
+        <p class="letter-text">
+          My dearest Maria,
+        </p>
+        <p class="letter-text">
+          On this special day, I wanted to tell you how incredibly blessed I am to have you in my life. Your smile lights up my world, your laugh is my favorite sound, and every moment with you feels like a gift.
+        </p>
+        <p class="letter-text">
+          Thank you for being you—kind, beautiful, and endlessly amazing. I hope this year brings you all the joy, love, and dreams your heart desires.
+        </p>
+        <p class="letter-text letter-signature">
+          Forever yours, with all my love
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Album Section -->
+  <section class="gallery-section">
+    <h2 class="gallery-title">Our Memories</h2>
+    <p class="gallery-subtitle">A little album of us</p>
+    <div class="gallery-container album-layout">
+      <!-- CUSTOMIZE: Replace src with your photos from assets/images/ (e.g. photo1.jpeg, photo2.jpeg) -->
+      <div class="gallery-item polaroid polaroid-1">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo1.jpeg" alt="Memory 1" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+1'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+      <div class="gallery-item polaroid polaroid-2">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo2.jpeg" alt="Memory 2" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+2'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+      <div class="gallery-item polaroid polaroid-3">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo3.jpeg" alt="Memory 3" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+3'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+      <div class="gallery-item polaroid polaroid-4">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo4.jpeg" alt="Memory 4" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+4'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+      <div class="gallery-item polaroid polaroid-5">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo5.jpeg" alt="Memory 5" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+5'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+      <div class="gallery-item polaroid polaroid-6">
+        <div class="polaroid-frame">
+          <img src="assets/images/photo6.jpeg" alt="Memory 6" onerror="this.src='https://placehold.co/400x400/f8e1e7/9d4b6b?text=Photo+6'">
+          <div class="polaroid-caption">Our memories</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox for gallery -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" src="" alt="Enlarged photo">
+  </div>
+
+  <footer class="footer">
+    <p>Made with &hearts; for Maria</p>
+  </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
